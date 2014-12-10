@@ -1,0 +1,24 @@
+<script src="canvas2webgl.js"></script>
+<script>
+        window.onload = function() {
+        Module.canvas = document.getElementById("dest");
+        src = document.getElementById("src");
+        var count = 0;
+        function draw() {
+                var ctx = src.getContext("2d");
+                ctx.clearRect(0, 0, src.width, src.height);
+                ctx.fillStyle = "black";
+                ctx.font = "72px/2 Unknown Font, sans-serif"
+                ctx.fillText(count, 20, 70);
+                count++;
+                requestAnimationFrame(draw);
+                webgl_put_image(src, src.width, src.height);
+        }
+        webgl_init();
+        requestAnimationFrame(draw);
+}
+</script>
+<canvas id="dest">
+</canvas>
+<canvas id="src">
+</canvas>
